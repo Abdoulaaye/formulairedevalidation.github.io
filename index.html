@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>Vérifier les saisies de formulaire</title>
+<style>
+    body{
+        background: darkgrey;
+    }
+label{
+    display: inline-block; 
+}
+h1{
+  color: rgb(246, 249, 251);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+}
+#sms{
+  width: 317px;
+  height: 50px;
+}
+.form_col{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: black;
+}
+</style>
+
+</head>
+<body >
+
+<h1>Formulaire de validation</h1>
+
+<form name="formulaire" action="" method="post" onSubmit="return verif_formulaire()">
+<pre>
+<span class="form_col">Sexe :</span>
+<label><input name="sex" type="radio" value="H"/>Homme</label>
+<label><input name="sex" type="radio" value="F"/>Femme</label>
+
+<label class="form_col" for="firstName">Prénom:</label>
+<input type="text" size="40" name="prenom">
+
+<label class="form_col" for="lastName">Nom :</label>
+<input type="text" size="40" name="nom">
+
+<label class="form_col" for="pwd1">Mot de passe:</label>
+<input type="password" size="40" name="mot_de_passe">
+
+<label class="form_col" for="email">Email:</label>
+<input type="email" size="40" name="email">
+
+<label class="form_col" for="age">Âge :</label>
+<input type=" number" size="40" name="age">
+
+<label class="form_col" for="textarea">Message:</label>
+<textarea name="message" id="sms" cols="x" rows="y"></textarea>
+
+<label class="form_col" for="formulaire">Formulaire:</label>
+<input type="submit" value="Envoyer" name="Envoyer"><input type="reset" value="Réinitialiser" name="Réinitialiser">
+
+
+
+</pre>
+</form>
+
+<script>
+
+function verif_formulaire()
+{
+    if(document.formulaire.prenom.value =="") {
+        alert("Veuillez entrer votre prenom!");
+        document.formulaire.prenom.focus();
+        return false;
+    }
+    
+ if(document.formulaire.nom.value == "")  {
+   alert("Veuillez entrer votre nom!");
+   document.formulaire.nom.focus();
+   return false;
+  }
+ if(document.formulaire.mot_de_passe.value == "") {
+   alert("Veuillez entrer votre mot de passe!");
+   document.formulaire.mot_de_passe.focus();
+   return false;
+  }
+ if(document.formulaire.email.value == "") {
+   alert("Veuillez mettre l'@!");
+   document.formulaire.email.focus();
+   return false;
+  }
+ if(document.formulaire.email.value.indexOf('@') == -1) {
+   alert("Veuillez mettre l'@!");
+   document.formulaire.email.focus();
+   return false;
+  }
+ if(document.formulaire.age.value == "") {
+   alert("L'age doit être un nombre!");
+   document.formulaire.age.focus();
+   return false;
+  }
+ var chkZ = 1;
+ for(i=0;i<document.formulaire.age.value.length;++i)
+   if(document.formulaire.age.value.charAt(i) < "1"
+   || document.formulaire.age.value.charAt(i) > "99")
+     	 chkZ = -1;
+ if(chkZ == -1) {
+   alert(" veuillez mettre un nombre!");
+       document.formulaire.age.focus();
+   return false;
+  }
+}
+
+</script>
+
+</body>
+</html
